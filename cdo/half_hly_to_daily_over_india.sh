@@ -21,7 +21,7 @@ do
 
         cd gpm_${j}/
 
-        ncrcat GPM_IMERG_2014*.nc gpm_monsoon_${j}.nc   # merging the data file                                                                                          
+        ncrcat GPM_IMERG_${j}*.nc gpm_monsoon_${j}.nc   # merging the data file                                                                                          
 
         cdo daysum gpm_monsoon_${j}.nc gpm_monsoon_${j}_daily.nc  # converting to daily 
         
