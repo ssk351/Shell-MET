@@ -1,2 +1,2 @@
 # Shell
-scripst related for CDO, Grads,and General 
+scripst related to CDO, Grads,and General 
