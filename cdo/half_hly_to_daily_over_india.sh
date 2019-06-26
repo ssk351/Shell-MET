@@ -10,12 +10,13 @@
 for j in {2014..2014..01}    # can edit ur YRSTART and YREND                                                                                                             
 
 do
+      mkdir gpm_${j}  # creating new directory                                                                                                                         
+
       for i in *${j}*.nc
 
-      do
+         do
 
-        mkdir gpm_${j}  # creating new directory                                                                                                                         
-
+        
         cdo remapbil,grides.txt ${i} ./gpm_${j}/${i}   # Remapping the each file                                                                                         
 
         cd gpm_${j}/
@@ -26,6 +27,6 @@ do
         
         cd ../
 
-      done
+          done
 done
 
