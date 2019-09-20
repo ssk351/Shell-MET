@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 from ecmwfapi import ECMWFDataServer
-server = ECMWFDataServer(url="https://api.ecmwf.int/v1",key="8ea200ecfac0eb05fd09a2f715fa053d",email="sivasai351@gmail.com")
+server = ECMWFDataServer(url="https://api.ecmwf.int/v1",key="8ea200ecfac0eb05fd09a2f715fa053d",email="username")
 
 server = ECMWFDataServer()
 server.retrieve({
@@ -19,3 +19,11 @@ server.retrieve({
     "target": "ERA_UVWINDS_1980_2015_aug5_7.nc",
 })
                                                   
+#note : shell script to generate required dates
+    
+#!/bin/bash
+
+#for i in {1980..2015..01}; do
+#echo -n $i"-08-05/"$i"-08-06/"$i"-08-07/"
+#done
+# run the script : sh generate.sh >&date.txt&
