@@ -25,6 +25,8 @@ do
 
         cdo daysum gpm_monsoon_${j}.nc gpm_monsoon_${j}_daily.nc  # converting to daily 
         
+        ###cdo divc,2 i/p o/p
+        
         cd ../
 
           done
