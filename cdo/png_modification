@@ -1,0 +1,4 @@
+;;;;;;; panneling
+system("for i in sample_fig* ;do convert -trim $i trim_$i ;done")
+system ("montage trim*.png -tile 3x1 -geometry +0+0 final.png")
+system("rm trim* sample_fig*.png")
