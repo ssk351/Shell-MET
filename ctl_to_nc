@@ -1,1 +1,3 @@
+#If you have a .grd file create a ctl file and convert into nc file using the following command
+
 cdo -f nc import_binary in_grads.ctl out_ncdf.nc
