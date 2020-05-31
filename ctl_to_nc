@@ -1,0 +1,1 @@
+cdo -f nc import_binary in_grads.ctl out_ncdf.nc
