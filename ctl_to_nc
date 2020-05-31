@@ -2,4 +2,18 @@
 
 http://www.imdpune.gov.in/Clim_Pred_LRF_New/Grided_Data_Download.html#
 
+EOF test.ctl
+DSET ind2015.grd
+TITLE 0.25 degr analyzed grids
+UNDEF -999.0
+XDEF 135 LINEAR 66.5 0.25
+YDEF 129 LINEAR 6.5 0.25
+ZDEF 1 linear 1 1
+* CHANGE TDEF TO 366 FOR LEAP YEARS
+TDEF 365 LINEAR 1jan2015 1DY
+VARS 1
+rf 0 99 GRIDDED RAINFALL
+ENDVARS
+
+
 cdo -f nc import_binary in_grads.ctl out_ncdf.nc
