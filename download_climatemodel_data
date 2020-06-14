@@ -1,0 +1,3 @@
+
+To download climate model data
+./wget-20200612101233.sh $openId=xxxxx $Enter password=xxxxx
