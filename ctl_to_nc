@@ -1,6 +1,6 @@
 #If you have a .grd file create a ctl file and convert into nc file using the following command
 
-http://www.imdpune.gov.in/Clim_Pred_LRF_New/Grided_Data_Download.html#
+
 
 EOF test.ctl
 DSET ind2015.grd
