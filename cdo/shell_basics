@@ -1,0 +1,2 @@
+# to rename the multiple files
+sed -i '/pattern to match/d' ./infile 
