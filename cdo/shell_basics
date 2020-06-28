@@ -1,2 +1,10 @@
-# to rename the multiple files
+# to change a perticular text in the multiple files
 sed -i '/pattern to match/d' ./infile 
+# to panel the figures
+montage trim*.png -tile 3x1 -geometry +0+0 final.png
+# to convert txt to csv
+sed 's/ \+/,/g' ifile.txt > ofile.csv
+#To rename multiple files
+for i in *.grd ;do rename -f 's/Rainfall_/ind/' $i;done
+# to add txt files columnwise in Unix
+paste file.txt file1.txt > outfile.txt
