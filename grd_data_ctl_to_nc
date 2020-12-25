@@ -1,0 +1,25 @@
+#If you have a .grd file create a ctl file and convert into nc file using the following command
+
+
+#!/bin/bash
+# To convert data
+
+for i in {1901..2019..1};do
+    echo "ind"${i}_"rfp25.grd"
+cat >test_${i}.ctl <<EOF
+    DSET ind${i}_rfp25.grd 
+    TITLE 0.25 degr analyzed grids
+    UNDEF -999.0
+    XDEF 135 LINEAR 66.5 0.25
+    YDEF 129 LINEAR 6.5 0.25
+    ZDEF 1 linear 1 1
+    * CHANGE TDEF TO 366 FOR LEAP YEARS
+    TDEF 365 LINEAR 1jan${i} 1DY
+    VARS 1
+    rf 0 99 GRIDDED RAINFALL
+    ENDVARS
+EOF
+    cdo -f nc import_binary test_${i}.ctl imd_${i}.nc
+    rm test_${i}.ctl
+
+done
