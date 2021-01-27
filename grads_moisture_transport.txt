@@ -1,0 +1,71 @@
+ 'reinit'
+'sdfopen PATH/SHUM.MON.MEAN.nc'
+'sdfopen PATH/UWND.MON.MEAN.nc'
+'sdfopen PATH/VWND.MON.MEAN.nc'
+
+'set gxout fwrite'
+'set fwrite PATH/MOISTFLUX.dat'
+it= 1
+while (it<=852)
+say it
+'set t ' it
+'define p1000 = const(shum,1000,-a)'
+'define Bqu = vint(p1000,shum*uwnd.2,300)'
+'define Bqv = vint(p1000,shum*vwnd.3,300)'
+'d Bqu'
+'d Bqv'
+it=it+1
+endwhile
+'disable fwrite'
+;;;;;;;;;;;;;;;;;;;;;;;;
+ DSET ^MOISTFLUX.dat
+TITLE Moisture Transport
+UNDEF -999.0
+XDEF 145 LINEAR 0 2.5
+YDEF 73 LINEAR -90 2.5
+ZDEF 1 LEVELS 1
+TDEF 852 LINEAR 00Z01JAN1948 1mo
+VARS 2
+Bqu 1 99 99 Zonal Moisture Transpor [kg/m/s]
+Bqv 1 99 99 Meridional Moisture Transpor [kg/m/s]
+ENDVARS
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ 'reinit'
+'set display color white'
+'c'
+'set grads off'
+'open PATH/MOISTFLUX.ctl'
+'set lon 95 141'
+'set lat -12 10'
+'set map 1 1 0.15'
+'set grid off'
+
+*DJF
+'define udec=ave(bqu,time=dec1981,time=dec2010,12)'
+'define ujan=ave(bqu,time=jan1981,time=dec2010,12)'
+'define ufeb=ave(bqu,time=feb1981,time=dec2010,12)'
+'define udjf=(udec+ujan+ufeb)/3/1000'      =====è dibagi 1000 karena satuan spesifik humidity yang seharusnya g/kg ternyata dalam file data satuannya kg/kg.
+
+'define vdec=ave(bqv,time=dec1981,time=dec2010,12)'
+'define vjan=ave(bqv,time=jan1981,time=dec2010,12)'
+'define vfeb=ave(bqv,time=feb1981,time=dec2010,12)'
+'define vdjf=(vdec+vjan+vfeb)/3/1000'      =====è dibagi 1000 karena satuan spesifik humidity yang seharusnya g/kg ternyata dalam file data satuannya kg/kg.
+
+'set gxout shaded'
+'set mpdset hires'
+
+'set clevs  100 200 300 400'
+'set rgb 16   0   0 255'
+'set rgb 17  55  55 255'
+'set rgb 18 110 110 255'
+'set rgb 19 165 165 255'
+'set rgb 20 220 220 255'
+'set ccols  20 19 18 17 16'
+
+'d mag(udjf,vdjf)'
+'set ccolor 2'
+'set gxout vector'
+'d udjf;vdjf'
+'cbarn'
+'draw title Moisture Transport Periode DJF \ Tahun 1981-2010'
+'printim PATH/moistflux_DJF.png png white'
