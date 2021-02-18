@@ -1,4 +1,7 @@
-
+#;; ;;;;;;;;;;;;;;;;;;;
+# Let the variables are x and y
+# Let the models are a,b,c
+#;; ;;;;;;;;;;;;;;;;;;;
 #!/bash/bin
 #''''''''''''''''''
 variables=("x" "y")
