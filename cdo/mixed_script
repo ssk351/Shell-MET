@@ -1,0 +1,18 @@
+#!/bin/bash
+# To get homogenity of the data
+# merge the data
+prefix=imd_
+#ls *$prefix*.nc
+echo "working on :" $prefix
+cdo mergetime *${prefix}*.nc ${prefix}_merge.nc
+# requred time
+yrs=1979
+yre=2007
+echo "time period:" $yrs "to" $yre
+cdo selyear,$yrs/$yre ${prefix}_merge.nc data_${prefix}.nc
+rm ${prefix}_merge.nc
+# to crop
+# Daily climatology
+cdo ydaymean data_${prefix}.nc ${prefix}_day_clim1.nc
+# monthly climatology
+cdo ymonmean data_${prefix}.nc ${prefix}_monclim1.nc
