@@ -1,0 +1,2 @@
+## to downlaod gesdisc/earth data 
+wget --user=sss --password=***** --content-disposition -i i/p.txt
