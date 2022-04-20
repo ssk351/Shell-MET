@@ -1,0 +1,7 @@
+##To download NCEP Reanalysis data
+
+set data "http://apdrc.soest.hawaii.edu/dods/public_data/Reanalysis_Data/NCEP/NCEP2/monthly/pressure/vwnd"
+sp rm -f ncep_mon_vwnd_1982_2021.nc
+let vwind=vwnd[x=30e:120e,y=40s:60n,l=25:516]
+repeat /l=1:491 save/file=ncep_mon_vwnd_1982_2021.nc/append vwind
+can data/all; can var/all
