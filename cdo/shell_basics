@@ -8,3 +8,5 @@ sed 's/ \+/,/g' ifile.txt > ofile.csv
 for i in *.grd ;do rename -f 's/Rainfall_/ind/' $i;done
 # to add txt files columnwise in Unix
 paste file.txt file1.txt > outfile.txt
+# rename the files
+for f in *185001-201412*; do mv "$f" "${f/185001-201412/198401_201412}";done
