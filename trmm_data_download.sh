@@ -10,3 +10,6 @@ wget --load-cookies ~/.urs_cookies --save-cookies ~/.urs_cookies --auth-no-chall
 
 
 ## run like sh filename.sh list of link file
+
+;;;;modified
+wget --user=ssk351 --password=Krishna@351 --content-disposition -i /mnt/c/Users/Krishna/Downloads/2018_mj.txt >&18.log&
