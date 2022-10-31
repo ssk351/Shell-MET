@@ -16,3 +16,5 @@ rm ${prefix}_merge.nc
 cdo ydaymean data_${prefix}.nc ${prefix}_day_clim1.nc
 # monthly climatology
 cdo ymonmean data_${prefix}.nc ${prefix}_monclim1.nc
+###compute anomalies
+cdo -ydaysub GPCP_DD_JJAS_1997_2015.nc -ydaymean GPCP_DD_JJAS_1997_2015.nc GPCP_DD_JJAS_1997_2015_anom.nc
