@@ -1,0 +1,21 @@
+## Commonly using unix commands and shell scripting addons
+
+source miniconda3/bin/activate
+
+system("convert -density 1200x1200 "+plot_fname+".eps -scale 1000x1000 -quality 100% "+plot_fname+".jpg")
+
+ wget --user=ssk351 --password=Krishna@351 --content-disposition -i ./sample.txt  ;; for GPM_DATA
+
+# to work on filnames....
+filename=Z_NAFP_C_BABJ_20210101014958_P_HRCLDAS_RT_CHN_0P01_HOR-SSRA-2021010100.n\
+c
+file="${filename##*_}"
+#file="${file##*-}"
+nd="${file//[!0-9]/}"
+
+## to get missed files
+grep -v -f t5.log tot_trmmv1.txt >&missed.txt&
+
+;;t5.log contains list of strings
+;;tot_links orinal 
+;; Writes the missed links in misses.txt
