@@ -1,6 +1,8 @@
+#;;----------------------------------------------------
 ##Script to post-process the data using the wrfouts
 ## Assume the data as saved in YYYYMMDD format
 ## Read the date and convert into days, months and years
+## you can add the more variables and do the needful changes
 #;;----------------------------------------------------
 
 
