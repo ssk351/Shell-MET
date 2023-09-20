@@ -1,11 +1,19 @@
 #!/bin/bash
 # To convert data from grd to netcdf
-#x=("01072019" "01082019" "02072019" "02082019" "02092019" "03072019" "03082019" "03092019" "04082019" "04092019" "05092019" "25072019" "26072019" "27062019" "27072019" "28062019" "28072019" "29062019" "30062019"
+#x=("01072019" "01082019" "02072019" "02082019" "02092019" "03072019" "03082019" "03092019" "04082019" "04092019" "05092019" "25072019" "26072019" "27062019" "27072019" "28062019" "2\
+8072019" "29062019" "30062019"
 #  )
-x=("05082019")
+x=("01062023" "06072023" "11082023" "18062023")
 
 for i in "${x[@]}";do
     echo "working with:"$i.grd
+
+    year="${i:4:4}"
+    month="${i:2:2}"
+    day="${i:0:2}"
+    mm=$(date -d "${year}-${month}-${day} +3 days" +%b)
+    echo $mm
+
 cat >test_${i}.ctl <<EOF
     DSET $i.grd
     TITLE 0.25 degranalyzed normal grids
@@ -14,13 +22,14 @@ cat >test_${i}.ctl <<EOF
     YDEF  281  LINEAR  -30.0 0.25
     ZDEF   1 linear 1 1
     * CHANGE TDEF TO 366 FOR LEAP YEARS
-    TDEF 1 LINEAR 28jun2019 1DY
+    TDEF 1 LINEAR ${day}${mm}${year} 1DY
     VARS  1
     rf 0 99 GRIDDED RAINFALL
     ENDVARS
 EOF
- cdo -f nc import_binary test_${i}.ctl ${i}.nc
- rm test_${i}.ctl
+     cdo -f nc import_binary test_${i}.ctl ${i}.nc
+     rm test_${i}.ctl
 done
+
 
 
