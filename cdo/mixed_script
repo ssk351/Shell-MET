@@ -18,3 +18,5 @@ cdo ydaymean data_${prefix}.nc ${prefix}_day_clim1.nc
 cdo ymonmean data_${prefix}.nc ${prefix}_monclim1.nc
 ###compute anomalies
 cdo -ydaysub GPCP_DD_JJAS_1997_2015.nc -ydaymean GPCP_DD_JJAS_1997_2015.nc GPCP_DD_JJAS_1997_2015_anom.nc
+;;; To create animated video with images
+ffmpeg -framerate 4 -start_number 1 -i ./scripts/spatial_precipitation.%06d.png -pix_fmt yuv420p out1.mp4
